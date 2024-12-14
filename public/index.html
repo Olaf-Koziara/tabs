@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./index.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="./index.css"/>
+</head>
+<body>
+<button type="button" id="tabSelect">select 1</button>
+<span id="tabIndex"></span>
+<div class="container">
+
+</div>
+<script>
+    const tabIndex = document.getElementById("tabIndex");
+    const setIndex = (index)=> {
+        tabIndex.innerText = index;
+    }
+    const tabsContent = [{title: 'Nikola Tesla',content:'\t\t\t\t\t\t<h1>Nikola Tesla</h1>\n' +
+            '\t\t\t\t\t\t<p>Serbian-American inventor, electrical engineer, mechanical engineer, physicist, and futurist best known for his contributions to the design of the modern alternating current (AC) electrical supply system.</p>\n' +
+            '\t\t\t\t\t\t<p>Tesla started working in the telephony and electrical fields before emigrating to the United States in 1884 to work for Thomas Edison. He soon struck out on his own with financial backers, setting up laboratories/companies to develop a range of electrical devices. His patented AC induction motor and transformer were licensed by George Westinghouse, who also hired Tesla as a consultant to help develop an alternating current system. Tesla is also known for his high-voltage, high-frequency power experiments in New York and Colorado Springs which included patented devices and theoretical work used in the invention of radio communication, for his X-ray experiments, and for his ill-fated attempt at intercontinental wireless transmission in his unfinished Wardenclyffe Tower project.</p>\n' +
+            '\t\t\t\t\t\t<p class="text-right"><em>Find out more about Nikola Tesla from <a href="http://en.wikipedia.org/wiki/Nikola_Tesla" target="_blank">Wikipedia</a>.</em></p>'},
+        {title: 'Leonardo da Vinci',content:'<h1>Leonardo da Vinci</h1>\n' +
+                '\t\t\t\t\t\t<p>Italian Renaissance polymath: painter, sculptor, architect, musician, mathematician, engineer, inventor, anatomist, geologist, cartographer, botanist, and writer. His genius, perhaps more than that of any other figure, epitomized the Renaissance humanist ideal. Leonardo has often been described as the archetype of the Renaissance Man, a man of "unquenchable curiosity" and "feverishly inventive imagination". He is widely considered to be one of the greatest painters of all time and perhaps the most diversely talented person ever to have lived. According to art historian Helen Gardner, the scope and depth of his interests were without precedent and "his mind and personality seem to us superhuman, the man himself mysterious and remote". Marco Rosci states that while there is much speculation about Leonardo, his vision of the world is essentially logical rather than mysterious, and that the empirical methods he employed were unusual for his time.</p>\n' +
+                '\t\t\t\t\t\t<p class="text-right"><em>Find out more about Leonardo da Vinci from <a href="http://en.wikipedia.org/wiki/Leonardo_da_Vinci" target="_blank">Wikipedia</a>.</em></p>'},
+        {title: 'Albert Einstein',content:'<h1>Albert Einstein</h1>\n' +
+                '\t\t\t\t\t\t<p>German-born theoretical physicist who developed the general theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics). While best known for his mass–energy equivalence formula E = mc2 (which has been dubbed "the world\'s most famous equation"), he received the 1921 Nobel Prize in Physics "for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect". The latter was pivotal in establishing quantum theory.</p>\n' +
+                '\t\t\t\t\t\t<p>Near the beginning of his career, Einstein thought that Newtonian mechanics was no longer enough to reconcile the laws of classical mechanics with the laws of the electromagnetic field. This led to the development of his special theory of relativity. He realized, however, that the principle of relativity could also be extended to gravitational fields, and with his subsequent theory of gravitation in 1916, he published a paper on the general theory of relativity.</p>\n' +
+                '\t\t\t\t\t\t<p class="text-right"><em>Find out more about Albert Einstein from <a href="http://en.wikipedia.org/wiki/Albert_Einstein" target="_blank">Wikipedia</a>.</em></p>\t\t'},{title: 'tab2',content:'tab'},{title: 'tab2',content:'tab'}]
+    let {setActiveTabByIndex,activeTabIndex} = createTabs({containerSelector:'.container',tabs:tabsContent,onTabChange:setIndex})
+    const tabSelectButton = document.getElementById('tabSelect');
+    tabSelectButton.addEventListener('click',()=> setActiveTabByIndex(1))
+</script>
+</body>
+</html>
