@@ -47,8 +47,6 @@ const createTabs = ({containerSelector, tabs, firstActive = false, onTabChange}:
                 toggleActiveClass(true, tabsElements[targetIndex])
                 activeTabIndex = targetIndex;
                 onTabChange && onTabChange(activeTabIndex)
-                console.log('activeTabIndex1')
-
             }
         }
         return {setActiveTabByIndex, activeTabIndex}
