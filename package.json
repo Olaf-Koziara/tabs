@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && concurrently \"tsc -w\" \"http-server -c-1 -f public/index.html\" \"sass --watch index.scss public/index.css\"",
-    "build": "tsc && concurrently \"tsc -w\" \"sass index.scss public/index.css\""
+    "build": "tsc && concurrently \"tsc\" \"sass index.scss public/index.css\""
   },
   "module": "es6",
   "private": true,
