@@ -41,7 +41,7 @@ jobs:
       - name: Set up dependencies
         run:
           npm install
-      - run: npm build  # Deployment job
+      - run: npm run build  # Deployment job
   deploy:
     environment:
       name: github-pages
