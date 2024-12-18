@@ -3,11 +3,14 @@ interface tab {
     content: string
 }
 
+type navigationPosition = 'start' | 'center' | 'end';
+
 interface tabsConfiguration {
     containerSelector: string,
     tabs: tab[],
     firstActive?: boolean,
     onTabChange?: (activeTabIndex?: number) => any
+    navigationPosition?: navigationPosition
 }
 
 interface tabElement {
@@ -15,13 +18,20 @@ interface tabElement {
     content: HTMLDivElement
 }
 
-const createTabs = ({containerSelector, tabs, firstActive = false, onTabChange}: tabsConfiguration) => {
+const createTabs = ({
+                        containerSelector,
+                        navigationPosition = 'start',
+                        tabs,
+                        firstActive = true,
+                        onTabChange
+                    }: tabsConfiguration) => {
     let activeTabIndex: number | null = firstActive ? 0 : null;
     const tabsContainer = document.querySelector(containerSelector);
     if (tabsContainer) {
         tabsContainer.classList.add('tabs');
         const tabsNav = document.createElement('ul');
         tabsNav.classList.add('tabs__nav');
+        tabsNav.classList.add(`justify-${navigationPosition}`)
         const tabsContent = document.createElement('div');
         tabsContent.classList.add('tabs__content');
 
@@ -39,8 +49,9 @@ const createTabs = ({containerSelector, tabs, firstActive = false, onTabChange}:
         })
         tabsContainer.appendChild(tabsNav)
         tabsContainer.appendChild(tabsContent)
+
         const setActiveTabByIndex = (targetIndex: number) => {
-            if (targetIndex !== activeTabIndex) {
+            if (targetIndex !== activeTabIndex || activeTabIndex === 0) {
                 if (activeTabIndex !== null) {
                     toggleActiveClass(false, tabsElements[activeTabIndex])
                 }
@@ -49,7 +60,8 @@ const createTabs = ({containerSelector, tabs, firstActive = false, onTabChange}:
                 onTabChange && onTabChange(activeTabIndex)
             }
         }
-        return {setActiveTabByIndex, activeTabIndex}
+        activeTabIndex !== null && setActiveTabByIndex(activeTabIndex);
+        return {setActiveTabByIndex}
     }
     return null;
 
