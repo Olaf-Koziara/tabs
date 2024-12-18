@@ -1,24 +1,47 @@
+
 .tabs {
   box-shadow: rgba(0, 0, 0, 0.08) 2px 4px 12px 0;
-  border-radius: 6px;
+  border-radius: 12px;
 
   &__nav {
     display: flex;
     list-style: none;
     padding: 0;
-    background-color: #f2f2f2;
     width: 100%;
     border-radius: 6px 6px 0 0;
+    overflow-x: auto;
+    background: linear-gradient(to right, #f2f2f2, #f2f2f2),
+    linear-gradient(to right, #f2f2f2, #f2f2f2),
+    linear-gradient(to right, rgba(0, 0, 0, .25), rgba(255, 255, 255, 0)),
+    linear-gradient(to left, rgba(0, 0, 0, .25), rgba(255, 255, 255, 0));
+    background-color: #f2f2f2;
+    background-position: left center, right center, left center, right center, center center;
+    background-repeat: no-repeat;
+    background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%, 100% 100%;
+    background-attachment: local, local, scroll, scroll, local;
+
+    &.justify {
+      &-end {
+        justify-content: end;
+      }
+
+      &-center {
+        justify-content: center;
+      }
+    }
 
     li {
       button {
         min-width: 7rem;
+        height: 100%;
         padding: 0.75rem 2.5rem;
+        word-break: keep-all;
         border: none;
-        font-size: 1rem;
+        font-size: 18px;
         cursor: pointer;
         transition: 300ms linear;
         background: transparent;
+        color: #000;
 
         &:hover {
           background-color: #f9f9f9;
